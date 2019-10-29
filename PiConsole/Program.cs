@@ -26,26 +26,26 @@ namespace PiConsole
             Console.WriteLine($"Найточніший спосіб рахунку числа пі - це спосіб {winName}, оскільки його помилка була мінімальною({minError})");
             Console.ReadKey();
         }
-        static void calculateViet ()
+        static void calculateViet()
         {
             double x = Sqrt(0.5);
             double result = x;
             for (int i = 0; i < cyclesCount; i++)
             {
-                x = Sqrt(0.5+0.5*x);
+                x = Sqrt(0.5 + 0.5 * x);
                 result *= x;
             }
             result = 2.0 / result;
-            checkResult((decimal)result,"Вієта");
+            checkResult((decimal)result, "Вієта");
         }
-        static void calculateJohnWallis ()
+        static void calculateJohnWallis()
         {
             decimal result = 1;
-            for (int i = 2; i < cyclesCount; i+=2)
+            for (int i = 2; i < cyclesCount; i += 2)
             {
                 result *= ((i - 1.0M) * (i + 1.0M)) / (i * i);
             }
-            checkResult(2/result, "Джонa Уоллисa");
+            checkResult(2 / result, "Джонa Уоллисa");
         }
         static void calculateLord()
         { // щось пішло не так
@@ -54,7 +54,7 @@ namespace PiConsole
             {
                 divideResult /= 2 + (i * i);
             }
-            checkResult(4M / (divideResult + 1),"лорда Брункера");
+            checkResult(4M / (divideResult + 1), "лорда Брункера");
         }
         static void calculateLeibhts()
         {
@@ -63,9 +63,9 @@ namespace PiConsole
             {
                 result += 1M / (i * 2 + 1) * (decimal)Pow(-1, i);
             }
-            checkResult(result * 4,"Лейбніца");
+            checkResult(result * 4, "Лейбніца");
         }
-        static void checkResult (decimal result, string name)
+        static void checkResult(decimal result, string name)
         {
             decimal error = Abs(PI - (result));
             Console.WriteLine($"Помилка {name} становить {error}. Його число ПІ {result}");
